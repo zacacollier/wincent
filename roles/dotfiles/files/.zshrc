@@ -312,3 +312,7 @@ if [ -e /etc/motd ]; then
     tee $HOME/.hushlogin < /etc/motd
   fi
 fi
+
+export PATH="$PATH:`yarn global bin`"
+export NVM_DIR="/Users/Apple/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

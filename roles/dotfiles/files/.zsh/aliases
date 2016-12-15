@@ -32,7 +32,7 @@ alias s=ssh
 alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
 alias t=tmux
 alias v=vim
-
+alias dots='ls -A $HOME/Documents/Dev/wincent/roles/dotfiles/files/'
 #
 # Suffix aliases
 # (eg. "foo.md" to open Markdown files in "Marked 2.app")

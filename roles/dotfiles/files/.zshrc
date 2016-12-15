@@ -1,15 +1,14 @@
 #
 # Teh H4xx
 #
-# My scripts are in /usr/local/bin
-#
-#
+
 if [ "$(uname)" = "Darwin" ]; then
   # Suppress unwanted Homebrew-installed stuff.
   if [ -e /usr/local/share/zsh/site-functions/_git ]; then
     mv -f /usr/local/share/zsh/site-functions/{,disabled.}_git
   fi
 fi
+
 #
 # Completion
 #
@@ -32,6 +31,14 @@ zstyle ':completion:*' list-colors ''
 # Correction
 #
 
+# exceptions to auto-correction
+alias bundle='nocorrect bundle'
+alias cabal='nocorrect cabal'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias stack='nocorrect stack'
+alias sudo='nocorrect sudo'
 
 #
 # Prompt

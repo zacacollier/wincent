@@ -122,8 +122,8 @@
 	fetchJobs = 4
 
 [user]
-	email = greg@hurrell.net
-	name = Greg Hurrell
+	name = Zac Collier
+	email = zacacollier@gmail.com
 # ignored by Git older than 1.7.10
 [include]
 	path = .gitconfig.local

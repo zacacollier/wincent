@@ -32,9 +32,14 @@ alias s=ssh
 alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
 alias t=tmux
 alias v=vim
+<<<<<<< HEAD
 alias dot='ls -Af $HOME/Documents/Dev/wincent/roles/dotfiles/files/'
 alias dotedit='vim $HOME/Documents/Dev/wincent/roles/dotfiles/files/'
-alias leader='vim -c "set t_te=" -c "set t_ti" -c "map <space>" -c q'
+||||||| merged common ancestors
+
+=======
+alias dots='ls -A $HOME/Documents/Dev/wincent/roles/dotfiles/files/'
+>>>>>>> Vundle and other customizations added
 #
 # Suffix aliases
 # (eg. "foo.md" to open Markdown files in "Marked 2.app")

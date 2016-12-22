@@ -1,8 +1,8 @@
+<<<<<<< HEAD
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set clipboard=unnamed
 
-set clipboard=unnamed
 " set the runtime path to include Vundle and initialize
 execute pathogen#infect()
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -35,7 +35,6 @@ Plugin 'Valloric/YouCompleteMe'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 Plugin 'ascenator/L9', {'name': 'newL9'}
-<<<<<<< HEAD
 " JS plugins
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -53,10 +52,6 @@ Plugin 'Quramy/vim-js-pretty-template'
 " Make NERD tree great again
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/goyo.vim'
-||||||| merged common ancestors
-
-=======
->>>>>>> edit tmux.conf
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -104,6 +99,58 @@ let g:UltiSnipsEditSplit="vertical"
 let g:AutoClosePairs = "() {} [] <> `` ''  \""
 " Added from wincent:
 " let mapleader="\<Space>"
+||||||| merged common ancestors
+let mapleader="\<Space>"
+=======
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" Added from wincent:
+let mapleader="\<Space>"
+>>>>>>> Vundle and other customizations added
 let maplocalleader="\\"
 
 " Extension -> filetype mappings.
@@ -121,7 +168,6 @@ source $VIMRUNTIME/macros/matchit.vim
 " bindings (<C-j> and <C-k>).
 let g:NERDTreeMapJumpPrevSibling='<Nop>'
 let g:NERDTreeMapJumpNextSibling='<Nop>'
-<<<<<<< HEAD
 let g:NERDTreeToggle="<C-m>"
 let g:NERDTreeClose="<C-m>"
 
@@ -162,12 +208,6 @@ autocmd QuickFixCmdPost    l* nested lwindow
 autocmd FileType javascript JsPreTmpl html
 autocmd FileType typescript JsPreTmpl markdown
 autocmd FileType typescript syn clear foldBraces
-||||||| merged common ancestors
-
-=======
-" let g:NERDTreeToggle='<C-n>'
-
->>>>>>> edit tmux.conf
 " Prevent tcomment from making a zillion mappings (we just want the operator).
 let g:tcommentMapLeader1=''
 let g:tcommentMapLeader2=''

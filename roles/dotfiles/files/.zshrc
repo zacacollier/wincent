@@ -1,7 +1,9 @@
 #
 # Teh H4xx
 #
-
+# My scripts are in /usr/local/bin
+#
+#
 if [ "$(uname)" = "Darwin" ]; then
   # Suppress unwanted Homebrew-installed stuff.
   if [ -e /usr/local/share/zsh/site-functions/_git ]; then
@@ -31,14 +33,6 @@ zstyle ':completion:*' list-colors ''
 # Correction
 #
 
-# exceptions to auto-correction
-alias bundle='nocorrect bundle'
-alias cabal='nocorrect cabal'
-alias man='nocorrect man'
-alias mkdir='nocorrect mkdir'
-alias mv='nocorrect mv'
-alias stack='nocorrect stack'
-alias sudo='nocorrect sudo'
 
 #
 # Prompt
@@ -316,3 +310,17 @@ fi
 export PATH="$PATH:`yarn global bin`"
 export NVM_DIR="/Users/Apple/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# exceptions to auto-correction
+alias bundle='nocorrect bundle'
+alias cabal='nocorrect cabal'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias stack='nocorrect stack'
+alias sudo='nocorrect sudo'
+# Git aliases
+alias g='git'
+alias ga='git add'
+alias gc='git commit'
+alias push='git push'

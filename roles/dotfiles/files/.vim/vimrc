@@ -1,7 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set clipboard=unnamed
 
 " set the runtime path to include Vundle and initialize
+execute pathogen#infect()
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -28,6 +30,18 @@ Plugin 'Valloric/YouCompleteMe'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 Plugin 'ascenator/L9', {'name': 'newL9'}
+" JS plugins
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
+" SuperTab
+Bundle 'ervandew/supertab'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+" Angular add-ons
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/vim-js-pretty-template'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,6 +57,19 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+set rtp+=~/.vim/ultisnips/*.snippets
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Added from wincent:
 let mapleader="\<Space>"
@@ -64,6 +91,41 @@ source $VIMRUNTIME/macros/matchit.vim
 let g:NERDTreeMapJumpPrevSibling='<Nop>'
 let g:NERDTreeMapJumpNextSibling='<Nop>'
 
+" Syntastic recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+" Syntastic checkers
+let g:syntastic_javascript_checkers = ['jshint', 'jsxhint', 'eslint']
+let g:syntastic_html_checkers = ['htmlhint', 'w3', 'proselint']
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_xml_checkers = ['plutil', 'xmllint']
+
+" Typescript settings
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+" Prettify template strings
+autocmd FileType javascript JsPreTmpl html
+autocmd FileType typescript JsPreTmpl markdown
+autocmd FileType typescript syn clear foldBraces
 " Prevent tcomment from making a zillion mappings (we just want the operator).
 let g:tcommentMapLeader1=''
 let g:tcommentMapLeader2=''
@@ -73,6 +135,24 @@ let g:tcommentTextObjectInlineComment=''
 " The default (g<) is a bit awkward to type.
 let g:tcommentMapLeaderUncommentAnyway='gu'
 
+" Syntastic config to play nicely with Angular
+let g:syntastic_html_tidy_ignore_errors = [
+    \"trimming empty <i>",
+    \"trimming empty <span>",
+    \"<input> proprietary attribute \"autocomplete\"",
+    \"proprietary attribute \"role\"",
+    \"proprietary attribute \"hidden\"",
+\]
+
+" JS Conceal characters
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_function             = "ƒ"
+set conceallevel=1
+" JS setup used libraries
+let g:used_javascript_libs = 'react,angularjs,requirejs,underscore'
+" JSDoc and NGDoc highlighting
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
 " Allow for per-machine overrides in ~/.vim/host/hostname and
 " ~/.vim/vimrc.local.
 let s:hostfile = $HOME . '/.vim/host/' . substitute(hostname(), "\\..*", '', '')

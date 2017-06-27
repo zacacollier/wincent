@@ -35,7 +35,6 @@ Plugin 'Valloric/YouCompleteMe'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 Plugin 'ascenator/L9', {'name': 'newL9'}
-<<<<<<< HEAD
 " JS plugins
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -53,10 +52,6 @@ Plugin 'Quramy/vim-js-pretty-template'
 " Make NERD tree great again
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/goyo.vim'
-||||||| merged common ancestors
-
-=======
->>>>>>> edit tmux.conf
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -121,7 +116,6 @@ source $VIMRUNTIME/macros/matchit.vim
 " bindings (<C-j> and <C-k>).
 let g:NERDTreeMapJumpPrevSibling='<Nop>'
 let g:NERDTreeMapJumpNextSibling='<Nop>'
-<<<<<<< HEAD
 let g:NERDTreeToggle="<C-m>"
 let g:NERDTreeClose="<C-m>"
 
@@ -162,12 +156,8 @@ autocmd QuickFixCmdPost    l* nested lwindow
 autocmd FileType javascript JsPreTmpl html
 autocmd FileType typescript JsPreTmpl markdown
 autocmd FileType typescript syn clear foldBraces
-||||||| merged common ancestors
-
-=======
 " let g:NERDTreeToggle='<C-n>'
 
->>>>>>> edit tmux.conf
 " Prevent tcomment from making a zillion mappings (we just want the operator).
 let g:tcommentMapLeader1=''
 let g:tcommentMapLeader2=''

@@ -314,13 +314,8 @@ if [ -e /etc/motd ]; then
   fi
 fi
 
-<<<<<<< HEAD
 # export PATH="$PATH:`yarn global bin`"
-||||||| merged common ancestors
-export PATH="$PATH:`yarn global bin`"
-=======
 export PATH="$PATH=/opt/local/bin:/opt/local/sbin:$PATH:`yarn global bin`"
->>>>>>> edit tmux.conf
 export NVM_DIR="/Users/Apple/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -337,5 +332,6 @@ alias g='git'
 alias ga='git add'
 alias gc='git commit'
 alias push='git push'
+alias muxs='tmux attach-session -t'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

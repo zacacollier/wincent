@@ -10,4 +10,9 @@ PATH=$PATH:$SYSTEM_PATH
 PATH=$PATH:$EC2_HOME/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/.cabal/bin
+PATH=$PATH:$(go env GOPATH)/bin
+# Go Workspace
+export GOPATH=$HOME/Documents/Dev/Go
+# Go binaries
+export GOBIN=$HOME/Documents/Dev/Go/bin
 export PATH

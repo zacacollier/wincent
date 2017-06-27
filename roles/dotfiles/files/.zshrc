@@ -10,7 +10,6 @@ if [ "$(uname)" = "Darwin" ]; then
     mv -f /usr/local/share/zsh/site-functions/{,disabled.}_git
   fi
 fi
-
 #
 # Completion
 #
@@ -40,7 +39,7 @@ zstyle ':completion:*' list-colors ''
 
 autoload -U colors
 colors
-
+export EDITOR=nvim
 # http://zsh.sourceforge.net/Doc/Release/User-Contributions.html
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
@@ -85,7 +84,7 @@ function +vi-git-untracked() {
   fi
 }
 
-RPROMPT_BASE="\${vcs_info_msg_0_}%F{blue}%~%f"
+PROMPT_BASE="\${vcs_info_msg_0_}%F{blue}%~%f"
 setopt PROMPT_SUBST
 
 # Anonymous function to avoid leaking NBSP variable.
@@ -99,11 +98,13 @@ function () {
   else
     # Don't bother with ZLE_RPROMPT_INDENT here, because it ends up eating the
     # space after PS1.
+    # Or does it ???
     export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%b%F{blue}%1~%(?..%F{yellow}%B!%b%f)%F{red}%B%(!.#.$)%b%f "
+    export ZLE_RPROMPT_INDENT=1
   fi
 }
 
-export RPROMPT=$RPROMPT_BASE
+export RPROMPT=$PROMPT_BASE
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
 
 #
@@ -255,7 +256,7 @@ function report-start-time() {
     ELAPSED="${ELAPSED}${SECS}"
     local ITALIC_ON=$'\e[3m'
     local ITALIC_OFF=$'\e[23m'
-    export RPROMPT="%F{cyan}%{$ITALIC_ON%}${ELAPSED}%{$ITALIC_OFF%}%f $RPROMPT_BASE"
+    export RPROMPT="%F{cyan}%{$ITALIC_ON%}${ELAPSED}%{$ITALIC_OFF%}%f $PROMPT_BASE"
     unset ZSH_START_TIME
   else
     export RPROMPT="$RPROMPT_BASE"
@@ -263,7 +264,6 @@ function report-start-time() {
 }
 
 add-zsh-hook precmd report-start-time
-
 add-zsh-hook precmd bounce
 
 function auto-ls-after-cd() {
@@ -307,7 +307,7 @@ if [ -e /etc/motd ]; then
   fi
 fi
 
-export PATH="$PATH:`yarn global bin`"
+# export PATH="$PATH:`yarn global bin`"
 export NVM_DIR="/Users/Apple/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -324,3 +324,5 @@ alias g='git'
 alias ga='git add'
 alias gc='git commit'
 alias push='git push'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

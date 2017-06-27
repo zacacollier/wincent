@@ -16,15 +16,19 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'terryma/vim-multiple-cursors'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'vim-syntastic/syntastic'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " Install L9 and avoid a Naming conflict if you've already installed a
@@ -32,7 +36,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ascenator/L9', {'name': 'newL9'}
 " JS plugins
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'elmcast/elm-vim'
 " SuperTab
 Bundle 'ervandew/supertab'
 " Track the engine.
@@ -42,7 +48,9 @@ Plugin 'honza/vim-snippets'
 " Angular add-ons
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
-
+" Make NERD tree great again
+Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'junegunn/goyo.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,12 +65,28 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-set rtp+=~/.vim/ultisnips/*.snippets
+set rtp+=~/.vim/ultisnips/*.snippets,~/.vim
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
+" Tab navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnew<CR>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+" Alternatively use
+"nnoremap th :tabnext<CR>
+"nnoremap tl :tabprev<CR>
+"nnoremap tn :tabnew<CR>
+" Quick write session with F2
+map <F2> :mksession! ~/vim_session <cr>
+" Open session with F3
+map <F3> :source ~/vim_session <cr>
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -71,14 +95,15 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+let g:AutoClosePairs = "() {} [] <> `` ''  \""
 " Added from wincent:
-let mapleader="\<Space>"
+" let mapleader="\<Space>"
 let maplocalleader="\\"
 
 " Extension -> filetype mappings.
 let filetype_m='objc'
 let filetype_pl='prolog'
-
+let g:jsx_ext_required = 0
 " Automatic, language-dependent indentation, syntax coloring and other
 " functionality.
 filetype indent plugin on
@@ -90,6 +115,8 @@ source $VIMRUNTIME/macros/matchit.vim
 " bindings (<C-j> and <C-k>).
 let g:NERDTreeMapJumpPrevSibling='<Nop>'
 let g:NERDTreeMapJumpNextSibling='<Nop>'
+let g:NERDTreeToggle="<C-m>"
+let g:NERDTreeClose="<C-m>"
 
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
@@ -112,10 +139,12 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 " Syntastic checkers
-let g:syntastic_javascript_checkers = ['jshint', 'jsxhint', 'eslint']
-let g:syntastic_html_checkers = ['htmlhint', 'w3', 'proselint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_html_checkers = ['htmlhint']
 let g:syntastic_typescript_checkers = ['tsuquyomi']
-let g:syntastic_xml_checkers = ['plutil', 'xmllint']
+let g:elm_syntastic_show_warnings = 1
+" let g:syntastic_xml_checkers = ['plutil', 'xmllint']
 
 " Typescript settings
 let g:typescript_compiler_binary = 'tsc'

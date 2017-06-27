@@ -2,7 +2,7 @@
 " Settings.
 "
 
-if &term =~# 'screen' || &term =~# 'tmux' || &term =~# 'xterm'
+if &term =~# 'screen' || &term =~# 'tmux' || &term =~# 'xterm' || &term =~# 'xterm-256color'
   let g:CommandTCancelMap=['<ESC>', '<C-c>']
   let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<Down>', '<ESC>OB']
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Up>', '<ESC>OA']
@@ -23,14 +23,15 @@ let g:CommandTWildIgnore.=',*/vendor'
 
 "
 " Mappings.
+" They be broken :(
 "
 
-nmap <unique> <Leader>c <Plug>(CommandTCommand)
-nmap <unique> <Leader>h <Plug>(CommandTHelp)
-nmap <unique> <LocalLeader>h <Plug>(CommandTHistory)
-nmap <unique> <LocalLeader>l <Plug>(CommandTLine)
-nmap <unique> <LocalLeader>s <Plug>(CommandTSearch)
-nmap <unique> <LocalLeader>t <Plug>(CommandTTag)
+" nmap <unique> <Leader>c <Plug>(CommandTCommand)
+" nmap <unique> <Leader>h <Plug>(CommandTHelp)
+" nmap <unique> <LocalLeader>h <Plug>(CommandTHistory)
+" nmap <unique> <LocalLeader>l <Plug>(CommandTLine)
+" nmap <unique> <LocalLeader>s <Plug>(CommandTSearch)
+" nmap <unique> <LocalLeader>t <Plug>(CommandTTag)
 
 let s:path = expand('<sfile>:p:h') . '/command-t.private.vim'
 if filereadable(s:path)
